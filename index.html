@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Path of Exile 2 裝備製作模擬器">
+  <title>PoE2 裝備製作模擬器</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <h1>PoE2 裝備製作模擬器</h1>
+    <p>繁體中文｜離線可用｜資料結構參考 PoE2DB</p>
+  </div>
+  <button id="resetAll" class="ghost">重置模擬器</button>
+</header>
+
+<main class="layout">
+  <section class="panel controls">
+    <h2>建立裝備</h2>
+    <label>裝備分類<select id="category"></select></label>
+    <label>裝備基底<select id="base"></select></label>
+    <label>物品等級<input id="itemLevel" type="number" min="1" max="100" value="82"></label>
+    <label>品質<input id="quality" type="number" min="0" max="30" value="0"></label>
+    <button id="createItem" class="primary">建立普通物品</button>
+
+    <h2>通貨</h2>
+    <div id="currencyGrid" class="currency-grid"></div>
+
+    <h2>工具</h2>
+    <div class="tool-row">
+      <button id="undo" class="ghost">上一步</button>
+      <button id="copyItem" class="ghost">複製物品文字</button>
+    </div>
+    <label class="toggle"><input id="showWeights" type="checkbox"> 顯示抽選權重</label>
+  </section>
+
+  <section class="workspace">
+    <article id="itemCard" class="item-card normal">
+      <div id="rarityLabel" class="rarity">普通</div>
+      <h2 id="itemName">精良護腕</h2>
+      <div id="baseName" class="base-name">精良護腕</div>
+      <div class="divider"></div>
+      <div id="baseStats" class="stats"></div>
+      <div class="divider"></div>
+      <div id="requirements" class="requirements"></div>
+      <div id="mods" class="mods empty">尚無詞綴</div>
+      <div id="status" class="status"></div>
+    </article>
+
+    <section class="panel probability">
+      <h2>詞綴池預覽</h2>
+      <div class="tabs">
+        <button class="tab active" data-side="prefix">前綴</button>
+        <button class="tab" data-side="suffix">後綴</button>
+      </div>
+      <div id="pool"></div>
+    </section>
+  </section>
+
+  <aside class="panel history-panel">
+    <h2>製作紀錄</h2>
+    <div class="summary">
+      <span>操作次數 <b id="actionCount">0</b></span>
+      <span>估計花費 <b id="costCount">0</b></span>
+    </div>
+    <ol id="history" class="history"></ol>
+  </aside>
+</main>
+
+<footer>
+  非官方粉絲工具，僅供製作規劃與教學。實際遊戲機率、詞綴與版本內容請以遊戲及 PoE2DB 最新資料為準。
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
